@@ -12,7 +12,23 @@ res.json({
     })
 })
 
-app.post('/api/posts' , (req,res) => {
+// Send Key Value Pair ( "Authorization" : "Bearer <access_token>" )
+
+app.post('/api/posts' , verifyToken, (req,res) => {
+
+    jwt.verify(req.token, "secretOrPrivateKey", (err, authData) => {
+        if(err){
+            res.sendStatus(403)
+        }else {
+            res.json({
+                message : "Post Request Works",
+                authenticated: true,
+                authData: authData,
+                date: Date.now()
+            })
+        }
+    })
+
     res.json({
         message : "Post Request Works",
         authenticated: false
@@ -21,7 +37,7 @@ app.post('/api/posts' , (req,res) => {
 
 // Get Token 
 
-app.post('/api/login', verifyToken, (req,res) => {
+app.post('/api/login',  (req,res) => {
 
     // Mock User After authentication with Database 
     const user = {
@@ -35,10 +51,10 @@ app.post('/api/login', verifyToken, (req,res) => {
 
     // Aschronously 
 
-    jwt.sign({user : user}, "secretOrPrivateKey" , (err, token) => {
-        res.json({
-            token: token
-        })
+// Set Expiry 
+
+    jwt.sign({user : user}, "secretOrPrivateKey" ,{ expiresIn: '20s' }, (err, token) => {
+        res.json({ token: token, test: "Test" })
     })
 })
 
@@ -47,7 +63,7 @@ app.post('/api/login', verifyToken, (req,res) => {
 // Authorization: Bearer <access_token>
 
 
-// Verify Token 
+// Verify Token And Add To Req Object
 
 function verifyToken(req,res,next){
     // Get Auth Header Value
@@ -59,8 +75,10 @@ function verifyToken(req,res,next){
         const bearer = bearerHeader.split(' ');
         // bearer = ["Bearer" , "<access_token>"]
         const bearerToken = bearer[1];
-        // Set Token
+
+        // Set Token ( NOW AVAILABLE in Req Object )
         req.token = bearerToken;
+        
         // Next Middleware 
         next();
 
