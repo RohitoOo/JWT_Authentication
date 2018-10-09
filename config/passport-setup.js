@@ -6,11 +6,11 @@ passport.use(
     new GoogleStrategy({
 
         // CLient Id & Client Secret Needed ( Google API Developer - Create Project )
-   
+        callbackURL: '/auth/google/redirect',
         clientID: keys.google.clientID,
         clientSecret: keys.google.clientSecret
-    }),
+    },
     () => {
         // Passport Call Back function
-    }
+    })
 )
