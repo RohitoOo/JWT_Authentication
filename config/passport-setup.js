@@ -10,7 +10,9 @@ passport.use(
         clientID: keys.google.clientID,
         clientSecret: keys.google.clientSecret
     },
-    () => {
-        // Passport Call Back function
+    (accessToken, refreshToken, profile, done) => {
+        // Passport Call Back function // After The Profile Information Is Received 
+
+        // console.log(profile, "Passport CallBack Function Fired!!")
     })
 )

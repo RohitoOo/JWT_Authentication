@@ -1,0 +1,14 @@
+const mongoose = require('mongoose');
+
+const UserSchema = new mongoose.Schema({
+    username: {
+        type: String,
+        required: true
+    },
+    googleid:{
+        type: Number,
+        required: true
+    }
+})
+
+module.exports = User = mongoose.model("user", UserSchema) 
