@@ -59,6 +59,6 @@ app.post('/test/:id' , (req,res) => {})
 
 const port = 5000;
 
-app.listen(port, () => {
+app.listen(process.env.PORT || port, () => {
     console.log("We are live on Port: "+ port)
 })
