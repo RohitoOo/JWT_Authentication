@@ -36,26 +36,7 @@ app.get('/' , (req,res) => {
 })
 
 
-app.post('/test/:id' , (req,res) => {
-
-let newUser = new User();
-
-    newUser.username = req.body.name;
-    newUser.googleid =  req.body.id;
-
-    console.log(newUser)
-newUser.save((err) => {
-    
-    if(err){
-        console.log(err)
-    }else{
-        res.send({
-            message: "Saved To Database"
-        })
-    }
-   
-})
-})
+app.post('/test/:id' , (req,res) => {})
 
 const port = 5000;
 

@@ -8,6 +8,9 @@ const UserSchema = new mongoose.Schema({
     googleid:{
         type: Number,
         required: true
+    },
+    imageurl:{
+        type: String,
     }
 })
 

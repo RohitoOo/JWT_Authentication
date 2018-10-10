@@ -22,7 +22,11 @@ router.get('/google' , passport.authenticate('google',{
 
 router.get('/google/redirect', passport.authenticate('google'), (req,res) => {
 
+    console.log(res)
     res.send("Loggin in with Google - Redirect Page")
+    // res.render('profile' , {
+
+    // })
 })
 
 router.get('/facebook' , (req,res) => {
