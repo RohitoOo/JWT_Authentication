@@ -9,7 +9,12 @@ router.get('/login' , (req,res) => {
 })
 
 router.get('/logout' , (req,res) => {
-    res.send("Logging Out")
+    // Logout With Passport 
+
+    req.session = null;
+    res.clearCookie('connect.sid');
+    res.redirect('/');
+
 })
 
 router.get('/google' , passport.authenticate('google',{
@@ -22,6 +27,9 @@ router.get('/google' , passport.authenticate('google',{
 // the user in the REQ object
 
 router.get('/google/redirect', passport.authenticate('google'), (req,res) => {
+    // res.render('profile' , {
+    //     user : req.user
+    // })
     // Add req.user object to Express session 
     req.session.user = req.user;
    res.redirect('/profile/home/')
