@@ -18,15 +18,13 @@ router.get('/google' , passport.authenticate('google',{
 
 } )
 
-// passport.authenticate('google') --> Has the Code 
+// passport.authenticate('google') --> Has the Google Code -> Goes Through Serlize and Deserialize Process and Returns 
+// the user in the REQ object
 
 router.get('/google/redirect', passport.authenticate('google'), (req,res) => {
-
-    console.log(res)
-    res.send("Loggin in with Google - Redirect Page")
-    // res.render('profile' , {
-
-    // })
+    // Add req.user object to Express session 
+    req.session.user = req.user;
+   res.redirect('/profile/home/')
 })
 
 router.get('/facebook' , (req,res) => {

@@ -19,7 +19,6 @@ passport.deserializeUser((id,done) => {
     User.find({id}).then( (user) => {
         done(null, user);
     })
-     
  })
 
 passport.use(
@@ -34,14 +33,13 @@ passport.use(
         // Passport Call Back function // After The Profile Information Is Received 
 
 
-        User.findOne({_id : User._id}).then( (currentUser) => {
+        User.findOne({googleid : profile.id}).then( (currentUser) => {
             if(currentUser){
                 // Check If User Already Exists 
                 console.log(`${currentUser.username} has been there and done that!`)
                 // Pass Existing User To Passport Serialize Function 
                 done(null, currentUser)
             }else {
-
                 let newUser = new User();
                 newUser.username = profile.displayName;
                 newUser.googleid =  profile.id;

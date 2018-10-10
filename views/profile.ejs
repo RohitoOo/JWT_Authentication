@@ -25,16 +25,26 @@
         <div class="nav-wrapper">
         <a href="#" class="brand-logo right">Oauth</a>
         <ul id="nav-mobile" class="hide-on-med-and-down">
-            <li><a href="#">Contact</a></li>
+            <li><a href="/auth/login">Logout</a></li>
         </ul>
         </div>
     </nav>
     <div class="container">
-        <ul class="collection">
-            <a class="collection-item" href="/auth/google"><li >Login With Google</li></a>
-            <a class="collection-item" href="/auth/facebook"><li >Login With Facebook</li></a>
-            <a class="collection-item" href="/auth/github"><li >Login With Github</li></a>
-        </ul>
+        <ul class="collection" style="border:none">
+            <li style="text-align: center; font-size: 3em; bor" class="collection-item">Welcome, <%= user.username  %></li>   
+         </ul>
+         <div class="container row">
+            <img style="width:10%" src=<%= user.imageurl  %> >
+            <img style="width:10%" src=<%= user.imageurl  %> >
+            <img style="width:10%" src=<%= user.imageurl  %> >
+            <img style="width:10%" src=<%= user.imageurl  %> >
+            <img style="width:10%" src=<%= user.imageurl  %> >
+            <img style="width:10%" src=<%= user.imageurl  %> >
+            <img style="width:10%" src=<%= user.imageurl  %> >
+            <img style="width:10%" src=<%= user.imageurl  %> >
+            <img style="width:10%" src=<%= user.imageurl  %> >
+         </div>
+       
     </div>
     <footer class="footer page-footer">
             <div class="footer-copyright">
