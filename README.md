@@ -2,7 +2,7 @@
 
 This is an  **Oauth Application** created from scratch.
 
-### Experience this Application!  [Live Link ]("https://gentle-cove-28403.herokuapp.com")
+### Experience this Application!  [Live Link ](https://gentle-cove-28403.herokuapp.com)
 
 Functionalities include :
 
