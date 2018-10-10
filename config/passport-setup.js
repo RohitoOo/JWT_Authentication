@@ -25,9 +25,10 @@ passport.use(
     new GoogleStrategy({
 
         // CLient Id & Client Secret Needed ( Google API Developer - Create Project )
-        callbackURL: '/auth/google/redirect',
+        callbackURL: "https://gentle-cove-28403.herokuapp.com" + '/auth/google/redirect',
         clientID: keys.google.clientID,
-        clientSecret: keys.google.clientSecret
+        clientSecret: keys.google.clientSecret,
+        proxy: true
     },
     (accessToken, refreshToken, profile, done) => {
         // Passport Call Back function // After The Profile Information Is Received 
