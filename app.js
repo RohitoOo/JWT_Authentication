@@ -6,11 +6,13 @@ const keys = require("./config/keys")
 const bodyParser = require('body-parser')
 const cookieSession = require('cookie-session')
 const passport = require('passport')
-
+const path = require('path')
 // Connect To Mongo Data Base 
 mongoose.connect(keys.mongodb.dbURI ,{ useNewUrlParser: true }, () => {
     console.log("We Are Connected To The Cloud - MongoDataBase ")
 })
+
+
 
 // Initialize Passport Setup And Strategy
 
@@ -19,6 +21,8 @@ const passportSetup = require('./config/passport-setup')
 // Initialize Express Server
 const app = express();
 
+// Favicon Logo
+app.use(express.static(path.join(__dirname, 'public'))); 
 
 // Cookie Session Setup
 
