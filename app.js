@@ -13,7 +13,6 @@ mongoose.connect(keys.mongodb.dbURI ,{ useNewUrlParser: true }, () => {
 })
 
 
-
 // Initialize Passport Setup And Strategy
 
 const passportSetup = require('./config/passport-setup')
